@@ -18,7 +18,7 @@ class BasicCompression {
 
 	static String compressed(String str) {
 		char[] original = str.toCharArray();
-		char[] compressed = new char[original.length * 2]; // worst case when string contains no same char sequences
+		char[] compressed = new char[original.length + 2]; // worst case when string contains no same char sequences
 		
 		int compressedLength = 0;
 		int sequence = 1;
@@ -57,8 +57,12 @@ class BasicCompression {
 		}
 	}
 
+	/*
+     * Space complexity O(n)
+     * Time complexity O(n)
+	 */
 	static String compressed2(String original) {
-		StringBuilder compressed = new StringBuilder(original.length() * 2);
+		StringBuilder compressed = new StringBuilder(original.length() + 2);
 		
 		int sequence = 1;
 		char previous = original.charAt(0);
