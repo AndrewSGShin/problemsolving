@@ -5,21 +5,21 @@ My private repository for practicing algorithms
 
 ## Run Java implementation
 ```
-cd recursion
-javac VectorProduct.java
-java VectorProduct
+> cd recursion
+> javac VectorProduct.java
+> java VectorProduct
 ```
 
 ## Run Scala implementation
 ```
-cd recursion
-scalac VectorProduct.java
-scala -classpath . VectorProduct
+> cd recursion
+> scalac VectorProduct.java
+> scala -classpath . VectorProduct
 ```
 
 ## Run JavaScript implementation
 ```
-node recursion/VectorProduct.js
+> node recursion/VectorProduct.js
 ```
 
 
