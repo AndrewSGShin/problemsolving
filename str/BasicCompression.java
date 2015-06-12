@@ -33,8 +33,8 @@ class BasicCompression {
 					compressed[compressedLength++] = sequenceChars[j];
 				}
 				sequence = 1;
+				previous = original[i];
 			}
-			previous = original[i];
 			if (compressedLength > original.length) {
 				return str;
 			}
@@ -72,8 +72,8 @@ class BasicCompression {
 			} else {
 				compressed.append(previous).append(sequence);
 				sequence = 1;
+				previous = original.charAt(i);
 			}
-			previous = original.charAt(i);
 			if (compressed.length() >= original.length()) {
 				return original;
 			}
@@ -100,8 +100,8 @@ class BasicCompression {
 			} else {
 				compressed += "" + previous + sequence;
 				sequence = 1;
+				previous = original.charAt(i);
 			}
-			previous = original.charAt(i);
 			if (compressed.length() >= original.length()) {
 				return original;
 			}
