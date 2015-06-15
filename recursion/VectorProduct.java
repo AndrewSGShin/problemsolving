@@ -16,6 +16,11 @@ class VectorProduct {
     vectorProduct(input, 0, "", results);
     System.out.println(results);
 
+    System.out.println();
+    System.out.println("Without recursion:");
+    List<List<Integer>> products = vectorProduct3(input);
+    System.out.println(products);
+
   }
   
   
@@ -49,5 +54,30 @@ class VectorProduct {
         vectorProduct(lists, level + 1, tuple + i + ' ', result);
       }
     }
-  }    
+  }   
+
+  /**
+   * Accepts tuples list [[1, 2, 3], [4, 5, 6], ...]
+   * Returns products list [[1, 4], [1, 5], [1, 6], [2, 4], [2, 5], [2, 6], ...]
+   */
+  static List<List<Integer>> vectorProduct3 (List<List<Integer>> tuples) {
+    
+    // initial setup to start multiplying tuples
+    List<List<Integer>> products = new LinkedList<>();
+    products.add(new LinkedList<>());
+
+    for (List<Integer> tuple : tuples) {
+      List<List<Integer>> buffer = new LinkedList<>();
+      for (List<Integer> product : products) {
+        for (Integer multiplier : tuple) {
+          List<Integer> newProduct = new LinkedList<>(product);
+          newProduct.add(multiplier);
+          buffer.add(newProduct);
+        }
+      }
+      products = buffer;
+
+    }
+    return products;
+  } 
 }
