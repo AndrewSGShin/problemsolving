@@ -3,26 +3,26 @@ package lists;
 /*
  * Singly linked list
  */
-class Node {
+class Node<T extends Comparable<T>> {
 
-	Object data;
+	T data;
 
-	Node next = null;
+	Node<T> next = null;
 
-	public Node(Object data) {
+	public Node(T data) {
 		this.data = data;
 	}
 
-	public void add(Object data) {
-		Node last = this;
+	public void add(T data) {
+		Node<T> last = this;
 		while (last.next != null) {
 			last = last.next;
 		}
-		last.next = new Node(data);
+		last.next = new Node<T>(data);
 	}
 
-	public Node get(Integer index) {
-		Node result = this;
+	public Node<T> get(Integer index) {
+		Node<T> result = this;
 		while (index > 0) {
 			result = result.next;
 			if (result == null) {
@@ -37,7 +37,7 @@ class Node {
 	public String toString() {
 		StringBuilder acc = new StringBuilder();
 		acc.append("[").append(data);
-		Node last = this;
+		Node<T> last = this;
 		while (last.next != null) {
 			last = last.next;
 			acc.append(", ").append(last.data);
