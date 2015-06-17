@@ -1,33 +1,42 @@
 package lists;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 class Lists {
 
 	public static void main(String... args) {
-		LinkedList<Object> list = new LinkedList<>(Arrays.asList(1, 1, 1));
+		LinkedList<Object> list = new LinkedList<>(Arrays.asList(1, 1, 1, 2, 3, 3));
 		System.out.println("Original: " + list);
-		removeDupsInPlace(list);
-		System.out.println("With duplicates removed: " + list);
+		dedup(list);
+		System.out.println("Deduped using hash table set: " + list);
+
+		LinkedList<Object> list2 = new LinkedList<>(Arrays.asList(1, 1, 1, 2, 3, 3));
+		System.out.println("Original: " + list2);
+		dedup(list2);
+		System.out.println("Deduped using low level hash table: " + list2);
+
+		LinkedList<Object> list1 = new LinkedList<>(Arrays.asList(1, 1, 1, 2, 3, 3));
+		System.out.println("Original: " + list1);
+		dedup(list1);
+		System.out.println("Deduped using double iteration: " + list1);
 	}
 
-	// Write code to remove duplicates from an unsorted linked list.
-	// How would you solve this problem if a temporary buffer is not allowed?
-	@SuppressWarnings("unchecked")
-	public static void removeDuplicates(LinkedList<Object> list) {
-		LinkedList<Object>[] hashTable = (LinkedList<Object>[]) new LinkedList[list.size()];
+	/**
+	 * Dedups an unsorted list using hash table set.
+	 * 
+	 * Time complexity O(n)
+	 * Space complexity O(n)
+	 */
+	public static void dedup1(LinkedList<Object> list) {
+		ArrayList<LinkedList<Object>> hashTable = new ArrayList<>(list.size());
 		ListIterator i = list.listIterator();
 		while(i.hasNext()) {
 			Object item = i.next();
 			int bucket = item.hashCode() % list.size();
-			LinkedList hashedList = hashTable[bucket];
+			LinkedList<Object> hashedList = hashTable.get(bucket);
 			if (hashedList == null) {
-				hashTable[bucket] = new LinkedList();
-				hashTable[bucket].add(item);	
+				hashTable.set(bucket, new LinkedList<>());
+				hashTable.get(bucket).add(item);	
 			} else {
 				boolean contains = false;
 				for (Object hashed : hashedList) {
@@ -45,10 +54,12 @@ class Lists {
 	}
 
 	/**
+	 * Dedups an unsorted list using hash table set.
+	 * 
 	 * Time complexity O(n)
 	 * Space complexity O(n)
 	 */
-	public static void removeDuplicates2(LinkedList<Object> list) {
+	public static void dedup(LinkedList<Object> list) {
 		Set<Object> met = new HashSet<Object>(list.size());
 		ListIterator i = list.listIterator();
 		while(i.hasNext()) {
@@ -62,10 +73,12 @@ class Lists {
 	}
 
 	/**
+	 * Dedups a unsorted list using double iteration.
+	 *
 	 * Time complexity O(n^2)
 	 * Space complexity O(1)
 	 */
-	public static void removeDupsInPlace(LinkedList<Object> list) {
+	public static void dedupSavingMemory(LinkedList<Object> list) {
 		for (int i = 0; i < list.size(); i++) {
 			ListIterator it = list.listIterator(i);
 			Object item = it.next();
