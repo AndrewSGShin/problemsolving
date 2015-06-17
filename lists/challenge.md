@@ -123,32 +123,24 @@ Vectors are array-based
 - Find a mininum element in an array - iterate and compare
 - Find particular element in a sorted array - binary search
 
-## Sequential Access Lists
-- Singly-Linked List
-- Doubly-Linked List 
+## Linked lists
+- Singly-linked
+- Doubly-linked 
 
 `java.util.LinkedList` - worst case time complexity
 
-### create
-- append (add:element, addLast:element, offer:element, offerLast:element, push:element) O(1)
-- prepend (addFirst:element, offerFirst:element) O(1)
-- insert at index (add:index:element) O(n/2) iterate half
+### mutation
+- head/tail insert/replace/remove O(1)
+- indexed insert/replace/remove O(n/2)
+- remove all O(n)
 
-### read
-- get first (element, getFist, peek, peekFirst) O(1)
-- get last (getLast, pollLast) O(1)
-- get by index (get:index) O(n/2) - iterate half
-- search equal (contains:element, indexOf:element, lastIndexOf:element, firstIndexOf:element) O(n) - iterate
+### access
+- head/tail O(1)
+- indexed O(n/2)
 
-### update
-- replace at index (set:index:element) O(n/2) iterate half
-
-### delete
-- remove first (remove, removeFirst, poll, pollFirst) O(1)
-- remove last (removeLast, pop) O(1)
-- remove at index (remove:index) O(n/2) - iterate half
-- remove equal (remove:element, removeFirstOccurence:element, removeLastOccurence:element) O(n) - iterate
-- remove all (clear) O(n) - iterate
+### search
+- search O(n)
+- search and get/replace/remove O(n)
 
 ## Binary Trees
 
