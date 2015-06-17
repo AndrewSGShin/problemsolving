@@ -21,6 +21,18 @@ class Node {
 		last.next = new Node(data);
 	}
 
+	public Node get(Integer index) {
+		Node result = this;
+		while (index > 0) {
+			result = result.next;
+			if (result == null) {
+				throw new IndexOutOfBoundsException();
+			}
+			index--;
+		}
+		return result;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder acc = new StringBuilder();

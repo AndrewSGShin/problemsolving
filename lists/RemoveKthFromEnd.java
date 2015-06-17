@@ -24,6 +24,13 @@ class RemoveKthFromEnd {
 		list = removeKthFromEndRecurse(list, l);
 		System.out.println("List with " + l + "th element (0-based) from the end removed: " + list);
 
+		Node node = list.get(2);
+		System.out.println("Second node is " + node.data);
+
+		removeFromMiddle(node);
+
+		System.out.println("List with node removed is " + list);
+
 	}
 
 	/**
@@ -103,5 +110,21 @@ class RemoveKthFromEnd {
 		}
 
 		return p1;
+	}
+	
+	/* Implement an algorithm to delete a node in the middle of a singly linked list, given only access to that node.
+	 *
+	 * EXAMPLE
+	 * Input: the node c from the linked list a->b->c->d->e
+	 * Result: nothing isreturned, but the new linked list looks like a->b->d->e
+	 */
+	static boolean removeFromMiddle(Node node) {
+		Node next = node.next;
+		if (next == null) {
+			return false;
+		}
+		node.data = next.data;
+		node.next = next.next;
+		return true;
 	}
 }
