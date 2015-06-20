@@ -54,6 +54,27 @@ class ListTests {
 		d.add(9);
 		d.add(5);
 		System.out.println(c + " + " + d + " = " + addNumbersForwardOrder(c, d));
+
+		Node<Integer> e = new Node<>(3);
+		e.add(4);
+		e.add(5);
+		e.add(7);
+		e.add(8);
+		e.add(9);
+		System.out.println("List contains loop (should be false): " + hasLoop(e));
+		Node<Integer> loopNode = new Node<>(10);
+
+		Node<Integer> f = e.get(2);
+		loopNode.next = f.next;
+		f.next = loopNode;
+
+		e.get(6).next = loopNode;
+
+		System.out.println("List contains loop (should be true): " + hasLoop(e));
+		System.out.println("Loop start data should be 10: " + loopStart(e).data);
+
+
+
 	}
 
 	/*
@@ -154,6 +175,67 @@ class ListTests {
 		}
 
 		return sumHead;
+	}
+
+	/**
+	 * Uses fast / slow runners technique
+	 * 
+	 * Time complexity worst case: O(n), best case: O(k) where k is the number of elements before the loop and k is less than n by definition.
+	 * Space complexity 1
+	 *
+	 * @return True if this list contains a loop, false otherwise
+	 */
+	public static <T extends Comparable<T>> boolean hasLoop(Node<T> list) {
+		Node<T> slow = list;
+		Node<T> fast = list;
+
+		// find the collision point
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Uses fast / slow runners technique
+	 * 
+	 * Time complexity worst case: O(n), best case: O(k) where k is the number of elements before the loop and k is less than n by definition.
+	 * Space complexity 1
+	 *
+	 * @param head List head
+	 * @return Node which is a loop start
+	 */
+	public static <T extends Comparable<T>> Node<T> loopStart(Node<T> head) {
+		Node<T> slow = head;
+		Node<T> fast = head;
+
+		// find the collision point
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast) {
+				break;
+			}
+		}
+
+		// No loop
+		if (fast == null || fast.next == null) {
+			return null;
+		}
+		
+		slow = head;
+
+		// find the loop start
+		while (slow != fast) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+
+		return fast;
 	}
 
 }

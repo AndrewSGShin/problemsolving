@@ -127,6 +127,8 @@ Vectors are array-based
 - Singly-linked
 - Doubly-linked 
 
+Detect if a list has a loop (circular (broken) lists) - "Fast Runner / Slow Runner" approach
+
 `java.util.LinkedList` - worst case time complexity
 
 ### mutation
