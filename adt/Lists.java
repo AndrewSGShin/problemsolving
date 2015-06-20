@@ -1,4 +1,4 @@
-package lists;
+package adt;
 
 import java.util.*;
 

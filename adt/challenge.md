@@ -180,6 +180,8 @@ Concepts
 
 ## Recursion
 
+Recursion has a base case and a number of recursive cases. Recursive method has an outline (checking for the base case and 'recurse' step) and the 'meat' logic which handles recursive cases. When the recursion moves down the stack it passes data in method params. When the recursion unwinds it returns data as 'recurse' method return value. Sometime the final result should be of a different type than the data we need when unwinding the stack. In this case we can create two methods: `myMethod` and `myMethodRecurse` and ajust the return type in the former.
+
 ## Big-O Time
 
 Coding

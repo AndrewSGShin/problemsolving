@@ -1,4 +1,4 @@
-package lists;
+package adt;
 
 class ListTests {
 

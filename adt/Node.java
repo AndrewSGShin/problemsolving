@@ -1,4 +1,4 @@
-package lists;
+package adt;
 
 /*
  * Singly linked list
@@ -167,7 +167,63 @@ class Node<T extends Comparable<T>> {
 
 		lessTail.next = greaterHead;
 		return lessHead;
+	
+
+	/**
+	 * Uses fast / slow runners technique
+	 * 
+	 * Time complexity: O(n)
+	 * Space complexity: O(1)
+	 *
+	 * @return Middle element of this list if odd, last element in the first half if even.
+	 */
+	public Node<T> middle(Node<T> list) {
+		Node<T> slow = list;
+		Node<T> fast = list;
+
+		// find the middle
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		return slow;
 	}
+
+	/**
+	 * Uses fast / slow runners technique
+	 * 
+	 * Time complexity: O(n)
+	 * Space complexity: O(n/2)
+	 *
+	 * @return if this list is a palindrome
+	 */
+	public boolean isPalindrome(Node<T> list) {
+		Node<T> slow = list;
+		Node<T> fast = list;
+
+		Stack<T> = new Stack<>();
+
+
+		// find the middle
+		while (fast != null && fast.next != null) {
+			stack.push(slow.data);
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		if (fast != null) { // list size is odd
+			slow = slow.next;
+		}
+
+		while (slow != null) {
+			if (slow.data != stack.pop().data) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 
 	/*
 	 * O(n)
