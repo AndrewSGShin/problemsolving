@@ -1,0 +1,2 @@
+- move to front strategy
+- LRU cache

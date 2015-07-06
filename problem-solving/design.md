@@ -1,0 +1,3 @@
+- publish-subscribe
+- factory 
+- singleton

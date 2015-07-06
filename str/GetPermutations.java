@@ -1,6 +1,6 @@
 	import java.util.*;
 
-	public class AllPermutations {
+	public class GetPermutations {
 
 		public static void main(String... args) {
 			String str = args[0];

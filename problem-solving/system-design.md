@@ -1,0 +1,9 @@
+- http://research.google.com/pubs/DistributedSystemsandParallelComputing.html
+- http://www.aosabook.org/en/distsys.html
+- https://www.google.com/search/about
+- http://research.google.com/archive/gfs.html
+- http://research.google.com/archive/bigtable.html
+- http://research.google.com/archive/mapreduce.html
+- http://research.google.com/archive/spanner.html
+- http://research.google.com/archive/chubby.html
+- https://www.google.com/about/careers/students/guide-to-technical-development.html
